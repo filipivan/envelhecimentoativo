@@ -1,0 +1,58 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2017-05-30 12:57
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Kauly
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `envativo` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE IF NOT EXISTS `envativo`.`usuario` (
+  `codigo` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(150) NOT NULL,
+  `endereco` VARCHAR(255) NOT NULL,
+  `telefone` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(150) NOT NULL,
+  `profissao` VARCHAR(255) NOT NULL,
+  `vinculo` VARCHAR(255) NOT NULL,
+  `numconselho` VARCHAR(150) NOT NULL,
+  `conselho` VARCHAR(150) NOT NULL,
+  `senha` VARCHAR(15) NOT NULL,  
+  `status` VARCHAR(150) NOT NULL,
+  `tipo` ENUM('Profissional', 'Admin') DEFAULT 'Profissional',
+  PRIMARY KEY (`codigo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `envativo`.`noticias` (
+  `codigo` INT(11) NOT NULL AUTO_INCREMENT,
+  `titulo` TINYTEXT NOT NULL,
+  `descricao` TEXT NOT NULL,
+  `autor` TINYTEXT NOT NULL,
+  `foto_tmp` CHAR(63) NOT NULL,
+  `foto` VARCHAR(100) NOT NULL,
+  `data_publicacao` DATETIME NOT NULL,
+  `data_encerramento` DATETIME NOT NULL,
+  PRIMARY KEY (`codigo`)
+  )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `envativo`.`conteudo` (
+  `codigo` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` TINYTEXT NOT NULL,
+  `descricao` TINYTEXT NOT NULL,
+  `arquivo_tmp` CHAR(63) NOT NULL,
+  `arquivo` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`codigo`)
+  )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
